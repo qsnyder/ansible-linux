@@ -1,0 +1,16 @@
+---
+#
+# ansible playbook to change dscp values within linux for
+# testing pbts within xrv9k (sunstone)
+#
+# author: quinn snyder, world wide technology
+#
+- name: change dscp value of linux hosts
+  hosts: ubuntus
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: flush iptables back to default states
+      shell: iptables -t mangle -F
+      sudo: true
